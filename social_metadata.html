@@ -1,0 +1,21 @@
+<!-- social metadata template from http://github.com/cagrimmett/jekyll-tools -->
+<meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+<meta property="og:type" content="{% if page.path contains '_posts' %}article{% else %}website{% endif %}">
+<meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+<meta property="og:image" content="{% if page.feature-img %}{{ page.feature-img | prepend: site.baseurl | prepend: site.url }}{% else %}{{ site.url }}/img/{{ site.theme.avatar }}{% endif %}">
+<meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.theme.description }}{% endif %}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:locale" content="{{ site.locale }}">
+{% if page.date %}
+ <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+ <meta property="article:author" content="{{ page.author }}">
+{% for post in site.related_posts limit:3 %}
+<meta property="og:see_also" content="{{ post.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+{% endfor %}
+{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@{{ site.theme.twitter }}">
+<meta name="twitter:creator" content="@{{ site.theme.twitter }}">
+<meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+<meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.theme.description }}{% endif %}">
+<meta name="twitter:image" content="{% if page.feature-img %}{{ page.feature-img | prepend: site.baseurl | prepend: site.url }}{% else %}{{ site.url }}/img/{{ site.theme.avatar }}{% endif %}">
