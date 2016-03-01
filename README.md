@@ -3,9 +3,9 @@ A collection of templates I made for my [Jekyll](http://jekyllrb.com)-powered [b
 
 The collection so far:
 
-- [A template for adding social metadata (Open Graph and Twitter Cards) to posts and pages](#socialmetadata)
-- [A template for adding Disqus comments](#commentsviadisqus)
-- [A template for listing posts by tag](#postsbytag)
+- [A template for adding social metadata (Open Graph and Twitter Cards) to posts and pages](#social-metadata)
+- [A template for adding Disqus comments](#comments-via-disqus)
+- [A template for listing posts by tag](#posts-by-tag)
 
 ---
 
