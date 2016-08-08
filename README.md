@@ -7,6 +7,7 @@ The collection so far:
 - [A template for adding Disqus comments](#comments-via-disqus)
 - [A template for listing posts by tag](#posts-by-tag)
 - [A posts heatmap calendar](#posts-heatmap-calendar)
+- [Options for Search on a Jekyll site](#search)
 
 ---
 
@@ -269,3 +270,10 @@ $(window).bind('resizeEnd', function() {
 - Refer to the Cal-HeatMap documentation for how to [change the colors](http://cal-heatmap.com/#legendColors), [add a legend](http://cal-heatmap.com/#legend), and [change the cell size](http://cal-heatmap.com/#cellSize).
 - To change the responsive breakpoints, change the various widths at `$(window).width() < X` in the `responsiveCal` function.
 - Only want to use this for a specific category [like I do](http://cagrimmett.com/til)? Change `{% for post in site.posts %}` in the `data` variable to `{% for post in site.categories['CATEGORYNAME'] %}` (change CATEGORYNAME to the name of the category you want to use this for)
+
+---
+
+## Search
+
+- Here is [a write-up on my site about two different options for search](http://cagrimmett.com/til/2016/07/17/jekyll-search.html): Google Custom Search and a custom static index that you query against.
+- I recommend [Mat Hayward’s Jekyll Search scripts](https://github.com/mathaywarduk/jekyll-search). It is what I used to power search on my [personal site](http://cagrimmett.com/search). I modified the way the dates are formatted, how the excerpt gets put into the JSON file, the output styles, and put in a conditional for external link posts, but the heavy-lifting is still done by Mat Hayward's scripts.
