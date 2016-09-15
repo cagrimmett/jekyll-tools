@@ -324,6 +324,11 @@ Generate your posts:
 
 Include the jQuery and Isotope libraries, then set up the functions to trigger the filtering and setting an "active" class on your buttons so you can highlight the active one:
 
+~~~~html
+<script src="http://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/isotope-layout@3.0/dist/isotope.pkgd.js"></script>
+~~~~
+
 ~~~~javascript
 // init Isotope
 var $grid = $('.grid').isotope({
