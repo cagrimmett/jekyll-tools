@@ -8,6 +8,7 @@ The collection so far:
 - [A template for listing posts by tag](#posts-by-tag)
 - [A posts heatmap calendar](#posts-heatmap-calendar)
 - [Options for Search on a Jekyll site](#search)
+- [A template for filtering categories with Isotope](#filtering-categories-with-isotope)
 
 ---
 
@@ -277,3 +278,64 @@ $(window).bind('resizeEnd', function() {
 
 - Here is [a write-up on my site about two different options for search](http://cagrimmett.com/til/2016/07/17/jekyll-search.html): Google Custom Search and a custom static index that you query against.
 - I recommend [Mat Hayward’s Jekyll Search scripts](https://github.com/mathaywarduk/jekyll-search). It is what I used to power search on my [personal site](http://cagrimmett.com/search). I modified the way the dates are formatted, how the excerpt gets put into the JSON file, the output styles, and put in a conditional for external link posts, but the heavy-lifting is still done by Mat Hayward's scripts.
+
+---
+
+## Filtering Categories with Isotope
+
+![Category Filtering with Isotope](category-filter-isotope/jekyll-isotope.gif)
+
+The template can be found at `category-filter-isotope/category-filter-isotope.html`.
+
+[Isotope](https://github.com/metafizzy/isotope) is a popular jQuery filtering and sorting plugin. I combined it with Liquid to automatically generate category filtering.
+
+"All" is selected by default. The other buttons come from the category you specify at the top of a post in your yaml front matter.
+
+Generate the buttons from categories:
+
+~~~~html
+<div class="button-group filter-button-group">
+	{% for category in site.categories %}
+		<a class="button" data-filter=".{{ category | first }}">{{ category | first }}</a>
+	{% endfor %}
+		<a class="button active" data-filter="*">All</a>
+</div>
+~~~~
+
+Generate your posts:
+
+~~~~html
+<div class="grid">
+	{% for post in site.posts %}
+     <div class="element-item {{ post.category }}">
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+
+        <p>
+          {{ post.excerpt }}
+        </p>
+     </div>
+    {% endfor %}
+</div>
+~~~~
+
+Include the jQuery and Isotope libraries, then set up the functions to trigger the filtering and setting an "active" class on your buttons so you can highlight the active one:
+
+~~~~javascript
+// init Isotope
+var $grid = $('.grid').isotope({
+  // options
+});
+// filter items on button click
+$('.filter-button-group').on( 'click', 'a', function() {
+  var filterValue = $(this).attr('data-filter');
+  $grid.isotope({ filter: filterValue });
+});
+$('.button-group a.button').on('click', function(){
+	$('.button-group a.button').removeClass('active');
+	$(this).addClass('active');
+});
+~~~~
