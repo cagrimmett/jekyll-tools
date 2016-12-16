@@ -9,6 +9,7 @@ The collection so far:
 - [A posts heatmap calendar](#posts-heatmap-calendar)
 - [Options for Search on a Jekyll site](#search)
 - [A template for filtering categories with Isotope](#filtering-categories-with-isotope)
+- [A Jekyll Collection template for Book Reviews, complete with star ratings](#collection-template-for-book-reviews)
 
 ---
 
@@ -344,3 +345,79 @@ $('.button-group a.button').on('click', function(){
 	$(this).addClass('active');
 });
 ~~~~
+
+
+---
+
+
+
+## Collection Template for Book Reviews
+
+I started writing book notes and collecting them on my website as reviews, so I thought I'd make the template I wrote public. No plugin necessary, so it should work on Github Pages.
+
+Here is a preview of a landing page with multiple book reviews: 
+
+![Book review landing](book-reviews/img/book_reviews_landing.png)
+
+Here is a preview of a book review detail:  
+
+![Book review detail](book-reviews/img/book_reviews_detail.png)
+
+A working demonstration of this collection can be seen at [http://cagrimmett.com/book-notes](http://cagrimmett.com/book-notes)
+
+### Setup
+
+All assets for this collection can be found in the `book-reviews` folder in this project.
+
+1) You first need to register the collection in `_config.yml`. Append this to the bottom of your current `_config.yml` or, if you already have a collection registered, add another entry. This same example is :
+~~~~yml
+# Collections
+collections:
+  book_reviews:
+    output: true
+    output_ext: .html
+    permalink: /book-reviews/:path/
+~~~~
+
+2) Place the `_book_reviews` folder and the `book-reviews.html` file in your Jekyll site root. This is the same folder that contains the `_config.yml` and `_posts` folder.
+
+3) If you use Sass, place the contents of `_book_reviews.scss` file in your main Sass file. If you don't use Sass, you'll need to rewrite the [media queries](http://www.w3schools.com/cssref/css3_pr_mediaquery.asp) (the first 45 lines) in regular CSS. 
+
+4) Write your book review and place it in the `_book_reviews` folder (an example is included). The rating is out of 5 stars and supports half stars. The templates assume that your images are stored in an `img` folder in your site root. Example: `yoursite.com/img/book_cover_image.jpg` If you want the `example_review.md` to work, make sure you put `img/deep_work.jpg` in your site's `img` folder.
+
+### How it works
+
+- This is powered by [Jekyll Collections](http://jekyllrb.com/docs/collections/). No plugin necessary.
+- I set up custom YAML metadata for the individual posts, which the landing page and detail page templates use and display. Feel free to change it to your needs. Here is an example book review post:
+~~~~md
+--- 
+layout: book-reviews-template
+title: Deep Work - Rules for Focused Success in a Distracted World
+author: Cal Newport
+category: Self-Improvement
+tags: 
+- Time management
+- Work
+- Focus
+stars: 4
+book-link: http://amzn.to/2gaSjqy
+cover: deep_work.jpg
+format: Audio Book
+date: 2016-11-28
+excerpt: "Deep work is the ability to focus without distraction on a cognitively demanding task. It produces great results."
+---
+After hearing a few interviews with Cal Newport on podcasts, I decided to pick this up. The book is divided into two main sections: The idea or "why" behind deep work, in which Newport tries to convince you it is necessary. I more or less bought in to this before listening to the book, but I listened to it anyway. The second part are the rules for how to do deep work. Newport writes this from an academic's point of view, but there are definitely universal principles you can apply.
+
+~~~~
+
+- The stars are powered by some defined CSS classes, a clever `span` setup controlling the width for color fill, and some Liquid to calculate the CSS class value: 
+~~~~liquid
+<span class="stars-container stars-{{ page.stars | times:20 | round: 0 }}" title="{{ page.stars }}/5">★★★★★</span></p>
+~~~~
+
+### Notes
+
+- If you have a custom open graph generator, you might need to add some [if/elsif](https://github.com/shopify/liquid/wiki/liquid-for-designers#if--else) statements to get the cover to show in the `og:image` field. 
+- Depending on your default layout template, you might need to edit my `book-reviews.html` page or the `book-reviews-template.html` template to work well with your layout. I'm assuming that if you use Jekyll, you probably know what you are doing. If not, drop me an email and I'll try to help.
+- I don't use all of the metadata on the landing page. I leave some items for the detail page. Feel free to change it to your liking.
+ 

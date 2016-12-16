@@ -1,0 +1,8 @@
+# Add this to the bottom of your _config.yml file! or, if you already have a collection registered, add another entry
+
+# Collections
+collections:
+  book_reviews:
+    output: true
+    output_ext: .html
+    permalink: /book-reviews/:path/

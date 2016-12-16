@@ -1,0 +1,85 @@
+$mobile: "(max-width: 1099px)";
+$desktop: "(min-width: 1100px)";
+
+
+@media #{$mobile} {
+  	.book_info {
+	  	display: block;
+	  	margin-bottom: 30px;
+  	}
+  	.book_cover {
+		width: 50%;
+		margin: 0 auto;
+	}
+	.book_meta {
+		width:70%;
+		margin-top:30px;
+	}
+}
+
+@media #{$desktop} {	
+	.book_info {
+		margin-bottom: 30px;
+		word-wrap: normal;
+	}
+	.book_cover {
+		width: 30%;
+		display: inline-block;
+	}
+	.book_meta {
+		width:65%;
+		margin-left: 4%;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.post-teaser .book_cover {
+		width: 25%;
+		display: inline-block;
+	}
+	.post-teaser .book_meta {
+		width:70%;
+		margin-left: 4%;
+		display: inline-block;
+		vertical-align: top;
+	}
+}
+
+a.button:hover {
+	color: #fff;
+}
+
+.stars-container {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+  overflow:hidden;
+}
+
+.stars-container:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '★★★★★';
+  color: lightgray;
+}
+
+.stars-container:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '★★★★★';
+  color: #F76B48;
+  overflow: hidden;
+}
+
+.stars-0:after { width: 0%; }
+.stars-10:after { width: 10%; }
+.stars-20:after { width: 20%; }
+.stars-30:after { width: 30%; }
+.stars-40:after { width: 40%; }
+.stars-50:after { width: 50%; }
+.stars-60:after { width: 60%; }
+.stars-70:after { width: 70%; }
+.stars-80:after { width: 80%; }
+.stars-90:after { width: 90%; }
+.stars-100:after { width: 100; }

@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<article>
+  <section class="post-content">
+	  <a class="button" href="/book-notes/">&larr; Back to book notes</a><br /><br />
+	  <div class="book_info">
+		  {% if page.cover %}<div class="book_cover"><a href="{{ page.book-link }}" target="_blank"><img src="/img/{{ page.cover }}" alt="Book cover for {{ page.title }}" /></a></div>{% endif %}
+		  <div class="book_meta">
+			  <h3><em>{{ page.title }}</em></h3>
+			  <p>Author: {{ page.author }}</p>
+			  <p>Rating:  <span class="stars-container stars-{{ page.stars | times:20 | round: 0 }}" title="{{ page.stars }}/5">★★★★★</span></p>
+			  <p>Genre: {{ page.category }}</p>
+			  <p>Themes: {% assign first = true %}{% for tag in page.tags %}{% unless first %},{% endunless %} {{ tag }}{% assign first = false %}{% endfor %}</p>
+			  <p>Format: {{ page.format }}</p>
+			  <p>Finished: {{ page.date | date: "%B %-d, %Y" }}</p>
+			  <p><a href="{{ page.book-link }}" target="_blank">Purchase link</a></p>
+		  </div>
+	  </div>
+	  <div class="book_feedback">
+	  	{{ content }}
+	  </div>
+  </section>
+</article>
+
