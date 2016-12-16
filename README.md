@@ -355,6 +355,8 @@ $('.button-group a.button').on('click', function(){
 
 I started writing book notes and collecting them on my website as reviews, so I thought I'd make the template I wrote public. No plugin necessary, so it should work on Github Pages.
 
+A working demonstration of this collection can be seen at [http://cagrimmett.com/book-notes](http://cagrimmett.com/book-notes)
+
 Here is a preview of a landing page with multiple book reviews: 
 
 ![Book review landing](book-reviews/img/book_reviews_landing.png)
@@ -362,8 +364,6 @@ Here is a preview of a landing page with multiple book reviews:
 Here is a preview of a book review detail:  
 
 ![Book review detail](book-reviews/img/book_reviews_detail.png)
-
-A working demonstration of this collection can be seen at [http://cagrimmett.com/book-notes](http://cagrimmett.com/book-notes)
 
 ### Setup
 
