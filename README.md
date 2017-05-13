@@ -10,6 +10,7 @@ The collection so far:
 - [Options for Search on a Jekyll site](#search)
 - [A template for filtering categories with Isotope](#filtering-categories-with-isotope)
 - [A Jekyll Collection template for Book Reviews, complete with star ratings](#collection-template-for-book-reviews)
+- [Moving your Jekyll Site to Amazon S3 and Cloudfront with Outside DNS](http://www.cagrimmett.com/development/2017/04/08/migrating-jekyll-to-s3-cloudfront.html)
 
 ---
 
@@ -81,7 +82,7 @@ Put this snippet in the post where you want your comments to show up. I put mine
 ---
 
 ## Posts by Tag
-`posts_by_tag.md` is a page that displays the site's tags in alphabetical order and shows how many posts there are per tag, makes anchor links for each tag, then outputs posts by tag in reverse chronological order. You can see it in practice at the [bottom of my Today I Learned page](http://cagrimmett.com/til). It will end up looking like this:
+`posts_by_tag.md` is a page that displays the site's tags in alphabetical order and shows how many posts there are per tag, makes anchor links for each tag, then outputs posts by tag in reverse chronological order. You can see it in practice at the [bottom of my Today I Learned page](http://cagrimmett.com/category/TIL). It will end up looking like this:
 
 ![What Posts by Tag should like like after implemented](posts_by_tag.png)
 
