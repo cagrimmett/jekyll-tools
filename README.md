@@ -11,6 +11,8 @@ The collection so far:
 - [A template for filtering categories with Isotope](#filtering-categories-with-isotope)
 - [A Jekyll Collection template for Book Reviews, complete with star ratings](#collection-template-for-book-reviews)
 - [Moving your Jekyll Site to Amazon S3 and Cloudfront with Outside DNS](http://www.cagrimmett.com/development/2017/04/08/migrating-jekyll-to-s3-cloudfront.html)
+- [Moving WordPress posts to Jekyll](http://www.cagrimmett.com/development/2018/01/21/website-rebuild-and-revival.html)
+- [Improving Jekyll Build Time](http://www.cagrimmett.com/til/2018/04/02/improving-jekyll-build-time.html)
 
 ---
 
@@ -40,8 +42,8 @@ theme:
 Make sure the following items are defined in your posts' [front matter](https://jekyllrb.com/docs/frontmatter/):
 ~~~~yaml
 ---
-title: 
-author: 
+title:
+author:
 date: YYYY-MM-DD
 feature-img: "/link/to/img.jpg"
 excerpt: This post is about blah blah blah...
@@ -124,7 +126,7 @@ ul.tag-box li span.size {
 
 ![Posts Heatmap Calendar](posts_heatmap_calendar.png)
 
-This heatmap calendar gives you a visual representation of when you posted on your Jekyll site. It loops through all of your posts, counts how many posts you have each day, creates a JSON string to hold them, then uses [moment.js](http://momentjs.com), [D3.js](http://d3js.org) and [Cal-HeatMap](http://cal-heatmap.com) to visualize them. 
+This heatmap calendar gives you a visual representation of when you posted on your Jekyll site. It loops through all of your posts, counts how many posts you have each day, creates a JSON string to hold them, then uses [moment.js](http://momentjs.com), [D3.js](http://d3js.org) and [Cal-HeatMap](http://cal-heatmap.com) to visualize them.
 
 It automatically loads the current month on the right and it has responsive breakpoints at 1400px, 730px, and 420px. It will work on Github Pages because it doesn't need any additional plugins to run. It only uses Liquid to do the counting and build the JSON string.
 
@@ -133,7 +135,7 @@ See it in action at [http://cagrimmett.com/2016/07/06/posts-heatmap-calendar.htm
 ### Implementation
 Put the `posts_heatmap_calendar.md` file at the root of [your Jekyll site](https://jekyllrb.com/docs/structure/). After your generate your site via `$ jekyll build`, it will be available at http://yoursitename.com/posts-cal/
 
-Alternatively, here is how you can include it on any Jekyll-generated page: 
+Alternatively, here is how you can include it on any Jekyll-generated page:
 
 1) Put these includes in the file's header:
 ~~~~html
@@ -177,7 +179,7 @@ Alternatively, here is how you can include it on any Jekyll-generated page:
 
 Note: I'm only using FontAwesome for the left and right arrows under the calendar. I included it because I use it elsewhere on my site, so it is always available in the header. If you don't want to use it, feel free to replace the arrows with `&larr;` and `&rarr;`.
 
-2) Include this Javascript in the footer to build the JSON, generate the calendar, and drive the responsiveness: 
+2) Include this Javascript in the footer to build the JSON, generate the calendar, and drive the responsiveness:
 ~~~~javascript
 <script type="text/javascript">
 
@@ -378,7 +380,7 @@ collections:
 
 2) Place the `_book_reviews` folder and the `book-reviews.html` file in your Jekyll site root. This is the same folder that contains the `_config.yml` and `_posts` folder.
 
-3) If you use Sass, place the contents of `_book_reviews.scss` file in your main Sass file. If you don't use Sass, you'll need to rewrite the [media queries](http://www.w3schools.com/cssref/css3_pr_mediaquery.asp) (the first 45 lines) in regular CSS. 
+3) If you use Sass, place the contents of `_book_reviews.scss` file in your main Sass file. If you don't use Sass, you'll need to rewrite the [media queries](http://www.w3schools.com/cssref/css3_pr_mediaquery.asp) (the first 45 lines) in regular CSS.
 
 4) Write your book review and place it in the `_book_reviews` folder (an example is included). The rating is out of 5 stars and supports half stars. The templates assume that your images are stored in an `img` folder in your site root. Example: `yoursite.com/img/book_cover_image.jpg` If you want the `example_review.md` to work, make sure you put `img/deep_work.jpg` in your site's `img` folder.
 
@@ -387,12 +389,12 @@ collections:
 - This is powered by [Jekyll Collections](http://jekyllrb.com/docs/collections/). No plugin necessary.
 - I set up custom YAML metadata for the individual posts, which the landing page and detail page templates use and display. Feel free to change it to your needs. Here is an example book review post:
 ~~~~md
---- 
+---
 layout: book-reviews-template
 title: Deep Work - Rules for Focused Success in a Distracted World
 author: Cal Newport
 category: Self-Improvement
-tags: 
+tags:
 - Time management
 - Work
 - Focus
@@ -407,14 +409,13 @@ After hearing a few interviews with Cal Newport on podcasts, I decided to pick t
 
 ~~~~
 
-- The stars are powered by some defined CSS classes, a clever `span` setup controlling the width for color fill, and some Liquid to calculate the CSS class value: 
+- The stars are powered by some defined CSS classes, a clever `span` setup controlling the width for color fill, and some Liquid to calculate the CSS class value:
 ~~~~liquid
 <span class="stars-container stars-{{ page.stars | times:20 | round: 0 }}" title="{{ page.stars }}/5">★★★★★</span></p>
 ~~~~
 
 ### Notes
 
-- If you have a custom open graph generator, you might need to add some [if/elsif](https://github.com/shopify/liquid/wiki/liquid-for-designers#if--else) statements to get the cover to show in the `og:image` field. 
+- If you have a custom open graph generator, you might need to add some [if/elsif](https://github.com/shopify/liquid/wiki/liquid-for-designers#if--else) statements to get the cover to show in the `og:image` field.
 - Depending on your default layout template, you might need to edit my `book-reviews.html` page or the `book-reviews-template.html` template to work well with your layout. I'm assuming that if you use Jekyll, you probably know what you are doing. If not, drop me an email and I'll try to help.
 - I don't use all of the metadata on the landing page. I leave some items for the detail page. Feel free to change it to your liking.
- 
