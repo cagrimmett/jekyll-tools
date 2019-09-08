@@ -1,0 +1,41 @@
+last-update {
+  font-size: 16px;
+  color: #777;
+  margin: 2rem 0;
+}
+
+.number {
+  font-size: 16px;
+  color: #777;
+}
+
+.year-container {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 2rem;
+  align-items: flex-start;
+  
+  @media (max-width: 850px) {
+    display: block;
+  }
+  
+  .books {
+    ul.reading-list {
+      line-height: 1.7;
+    }
+    .author {
+      font-size: 16px;
+      color: #555;
+    }
+    .star {
+      margin-left: 3px;
+      color: $orange;
+      font-size: 16px;
+    }
+    a {
+      color: #383838;
+    }
+  }
+  
+}
