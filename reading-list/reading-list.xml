@@ -1,0 +1,30 @@
+---
+layout: null
+---
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>{{ "Chuck Grimmett's Reading List" | xml_escape }}</title>
+    <atom:link href="{{ "/reading-list.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
+    <link>{{ site.url }}{{ site.baseurl }}/reading</link>
+    <description>Books Chuck Grimmett has read. Starred = Recommended.</description>
+    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+    {% for entry in site.data.reading.list %}
+      {% for book in entry.books %}
+      <item>
+        <title>{% if book.star %}★ {% endif %}{{ book.title | xml_escape }} by {{ book.author | xml_escape }}</title>
+        <dc:creator>{{ book.author | xml_escape}}</dc:creator>
+        <link>{{ book.link | xml_escape}}</link>
+        <guid isPermaLink="true">{{ book.link | xml_escape}}</guid>
+				<description>
+					<![CDATA[
+            <p><a href="{{ book.link | xml_escape}}">{{ book.title | xml_escape }}</a> by {{ book.author | xml_escape }}</p>
+            <p>{% if book.star %}★ Chuck recommends ★{% endif %}</p>
+            <p>Year read: {{ entry.year }}</p>
+            <p><a href="http://cagrimmett.com/reading">See my full reading list</a></p>
+          ]]>
+				</description>
+      </item>
+      {% endfor %}
+    {% endfor %}
+  </channel>
+</rss>

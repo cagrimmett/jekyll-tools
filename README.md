@@ -476,6 +476,8 @@ After hearing a few interviews with Cal Newport on podcasts, I decided to pick t
 
 I implemented a reading list with Jekyll data inspired by [Frank Chimero](https://frankchimero.com/reading/). It displays the books you've read by year, includes support for links and stars for recommendations. Best of all, it is powered by a single [Jekyll data file](https://jekyllrb.com/docs/datafiles/) so you only have to update the books you've read in a simple yml file instead of messing with markup. This also allows you to programatically count the number of books you've read and reuse the data for other things later.
 
+I also included the ability to generate an RSS feed for the list.
+
 [See my live reading list page](http://cagrimmett.com/reading)
 [Read my blog post about this](http://www.cagrimmett.com/development/2019/09/07/reading-list.html)
 
@@ -488,3 +490,4 @@ Note: All files referenced in this section live in `/reading-list`
 - Put `reading.yml` in your Jekyll site's `_data` folder.
 - Put the markup from `index.html` in the page you want to render the list in.
 - Put the styles from `styles.scss` into the stylesheet that governs your listing page.
+- Put `reading-list.xml` wherever you'd like to generate an RSS feed for your reading list.
