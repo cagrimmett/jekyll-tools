@@ -212,7 +212,7 @@ Alternatively, here is how you can include it on any Jekyll-generated page:
 
 Note: I'm only using FontAwesome for the left and right arrows under the calendar. I included it because I use it elsewhere on my site, so it is always available in the header. If you don't want to use it, feel free to replace the arrows with `&larr;` and `&rarr;`.
 
-2. Include this Javascript in the footer to build the JSON, generate the calendar, and drive the responsiveness:
+2. Include this [Javascript](https://www.scaler.com/topics/javascript/) in the footer to build the JSON, generate the calendar, and drive the responsiveness:
 
 ```javascript
 <script type="text/javascript">
